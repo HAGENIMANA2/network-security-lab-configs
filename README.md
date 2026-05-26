@@ -28,7 +28,7 @@ I hold a valid CCNA certification (2015) and have continuously practiced network
 | 05-vulnerability-assessment/ | Nmap scans, hardening checklists | 
 | 06-security-monitoring/ | SNMP configs, log review procedures | 
 | 07-incident-response/ | IR plan templates, escalation procedures | 
-| 08-security-documentation/ | Configuration baselines, operational guides | 
+| 08-security-documentation/ | Configuration baselines, operational guides |  
  
 ## Contact 
  
