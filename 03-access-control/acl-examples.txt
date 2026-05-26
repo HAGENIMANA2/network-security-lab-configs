@@ -11,4 +11,4 @@ line vty 0 4
 interface GigabitEthernet0/1 
  switchport port-security 
  switchport port-security maximum 2 
- switchport port-security violation shutdown 
+ switchport port-security violation shutdown
