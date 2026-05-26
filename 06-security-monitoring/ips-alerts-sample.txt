@@ -2,4 +2,4 @@
 # Author: Jean de Dieu HAGENIMANA - CCNA Certified 
  
 alert tcp $EXTERNAL_NET any -> $HOME_NET 22 (msg:"SSH BRUTE FORCE"; sid:1000001;) 
-alert tcp $HOME_NET any -> $EXTERNAL_NET 4444 (msg:"C2 CHANNEL DETECTED"; sid:1000002;) 
+alert tcp $HOME_NET any -> $EXTERNAL_NET 4444 (msg:"C2 CHANNEL DETECTED"; sid:1000002;)  
