@@ -1,0 +1,60 @@
+! Access Control List (ACL) Examples
+! Author: Jean de Dieu HAGENIMANA - CCNA Certified
+
+! ============================================
+! STANDARD ACL - Restrict Management Access
+! ============================================
+! Allow only management subnet to access VTY lines
+access-list 10 permit 192.168.1.0 0.0.0.255
+access-list 10 deny any log
+
+! Apply to VTY lines
+line vty 0 4
+ access-class 10 in
+ transport input ssh
+
+! ============================================
+! EXTENDED ACL - Service-Based Restrictions
+! ============================================
+! Allow HTTPS only from internal subnets
+access-list 101 permit tcp 10.0.0.0 0.0.255.255 any eq 443
+
+! Allow DNS only from specific sources
+access-list 101 permit udp 10.0.0.0 0.0.255.255 any eq 53
+
+! Block specific high-risk countries (example)
+access-list 101 deny ip 5.0.0.0 0.255.255.255 any
+access-list 101 deny ip 185.0.0.0 0.255.255.255 any
+
+! Log and deny everything else
+access-list 101 deny ip any any log
+
+! Apply to interface
+interface GigabitEthernet0/0
+ ip access-group 101 in
+
+! ============================================
+! PORT SECURITY - Prevent MAC Flooding
+! ============================================
+interface GigabitEthernet0/1
+ switchport port-security
+ switchport port-security maximum 2
+ switchport port-security violation shutdown
+ switchport port-security mac-address sticky
+ switchport port-security aging time 60
+
+! ============================================
+! TIME-BASED ACL - Restrict after hours
+! ============================================
+time-range BUSINESS-HOURS
+ periodic weekdays 8:00 to 18:00
+
+access-list 102 permit tcp 192.168.1.0 0.0.0.255 any eq 80 time-range BUSINESS-HOURS
+access-list 102 deny ip any any log
+
+! ============================================
+! VERIFICATION COMMANDS
+! ============================================
+! show access-lists
+! show port-security
+! show port-security interface

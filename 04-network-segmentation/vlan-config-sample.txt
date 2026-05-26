@@ -1,0 +1,76 @@
+! VLAN Configuration for Network Segmentation
+! Separates: Application, Database, User Access, Management
+! Author: Jean de Dieu HAGENIMANA - CCNA Certified
+
+! ============================================
+! CREATE VLANS
+! ============================================
+vlan 10
+ name APPLICATION
+vlan 20
+ name DATABASE
+vlan 30
+ name USER_ACCESS
+vlan 99
+ name MANAGEMENT
+
+! ============================================
+! ASSIGN PORTS TO VLANS
+! ============================================
+! Application servers
+interface range GigabitEthernet0/1-10
+ switchport mode access
+ switchport access vlan 10
+
+! Database servers
+interface range GigabitEthernet0/11-20
+ switchport mode access
+ switchport access vlan 20
+
+! User workstations
+interface range GigabitEthernet0/21-40
+ switchport mode access
+ switchport access vlan 30
+
+! Management interfaces
+interface range GigabitEthernet0/41-48
+ switchport mode access
+ switchport access vlan 99
+
+! ============================================
+! CONFIGURE INTER-VLAN ROUTING (SVI)
+! ============================================
+interface vlan 10
+ ip address 192.168.10.1 255.255.255.0
+ no shutdown
+
+interface vlan 20
+ ip address 192.168.20.1 255.255.255.0
+ no shutdown
+
+interface vlan 30
+ ip address 192.168.30.1 255.255.255.0
+ no shutdown
+
+interface vlan 99
+ ip address 192.168.99.1 255.255.255.0
+ no shutdown
+
+! ============================================
+! RESTRICT DATABASE VLAN ACCESS
+! ============================================
+! Only Application VLAN can access Database VLAN
+access-list 120 permit ip 192.168.10.0 0.0.0.255 192.168.20.0 0.0.0.255
+access-list 120 deny ip any 192.168.20.0 0.0.0.255
+access-list 120 permit ip any any
+
+interface vlan 20
+ ip access-group 120 in
+
+! ============================================
+! VERIFICATION COMMANDS
+! ============================================
+! show vlan brief
+! show interface trunk
+! show ip interface brief
+! show access-lists

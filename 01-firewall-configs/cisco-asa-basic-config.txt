@@ -1,0 +1,49 @@
+! Cisco ASA Basic Firewall Configuration Sample
+! Demonstrates: Interface configuration, ACLs, NAT, logging
+! Author: Jean de Dieu HAGENIMANA - CCNA Certified
+! Date: 2024
+
+! Configure interfaces
+interface GigabitEthernet0/0
+ nameif outside
+ security-level 0
+ ip address dhcp
+!
+interface GigabitEthernet0/1
+ nameif inside
+ security-level 100
+ ip address 192.168.1.1 255.255.255.0
+
+! Configure default route
+route outside 0.0.0.0 0.0.0.0 192.168.0.1 1
+
+! Configure Access Control Lists (ACLs)
+! Allow HTTPS traffic to web server
+access-list outside_in extended permit tcp any host 203.0.113.10 eq 443
+
+! Allow SSH from management subnet only
+access-list outside_in extended permit tcp 192.168.0.0 255.255.255.0 host 203.0.113.10 eq 22
+
+! Deny all other traffic and log
+access-list outside_in extended deny ip any any log
+
+! Apply ACL to interface
+access-group outside_in in interface outside
+
+! Configure logging for security monitoring
+logging enable
+logging buffer-size 4096
+logging buffered informational
+logging asdm informational
+
+! Configure SSH access for secure management
+ssh 192.168.1.0 255.255.255.0 inside
+ssh timeout 30
+ssh version 2
+
+! Configure NAT for internal users
+nat (inside) 1 192.168.1.0 255.255.255.0
+global (outside) 1 interface
+
+! Save configuration
+write memory

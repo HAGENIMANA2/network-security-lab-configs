@@ -1,0 +1,52 @@
+! IPsec VPN Configuration Sample (Cisco IOS)
+! Site-to-Site VPN between Headquarters and Disaster Recovery site
+! Author: Jean de Dieu HAGENIMANA - CCNA Certified
+
+! ============================================
+! PHASE 1: ISAKMP POLICY (IKEv1)
+! ============================================
+crypto isakmp policy 10
+ encryption aes 256
+ hash sha256
+ authentication pre-share
+ group 14
+ lifetime 86400
+
+! ============================================
+! PRE-SHARED KEY
+! ============================================
+crypto isakmp key VPNKEY123 address 10.0.0.2
+
+! ============================================
+! PHASE 2: IPSEC TRANSFORM SET
+! ============================================
+crypto ipsec transform-set VPN-SET esp-aes 256 esp-sha256-hmac
+ mode tunnel
+
+! ============================================
+! CRYPTO ACL (Traffic to encrypt)
+! ============================================
+! HQ LAN (192.168.1.0) to DR LAN (192.168.2.0)
+access-list 100 permit ip 192.168.1.0 0.0.0.255 192.168.2.0 0.0.0.255
+
+! ============================================
+! CRYPTO MAP
+! ============================================
+crypto map VPN-MAP 10 ipsec-isakmp
+ set peer 10.0.0.2
+ set transform-set VPN-SET
+ match address 100
+ set security-association lifetime seconds 3600
+
+! ============================================
+! APPLY TO OUTSIDE INTERFACE
+! ============================================
+interface GigabitEthernet0/0
+ crypto map VPN-MAP
+
+! ============================================
+! VERIFICATION COMMANDS
+! ============================================
+! show crypto isakmp sa
+! show crypto ipsec sa
+! show crypto map
