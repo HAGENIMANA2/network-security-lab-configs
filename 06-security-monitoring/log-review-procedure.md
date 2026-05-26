@@ -4,4 +4,4 @@
 ## Step 1: Priority Review 
 - Check firewall denies 
 - Review IDS/IPS critical alerts 
-- Examine authentication failures 
+- Examine authentication failures  
