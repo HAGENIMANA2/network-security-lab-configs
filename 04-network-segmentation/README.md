@@ -14,28 +14,24 @@ flowchart TD
         API[API Servers<br/>10.10.0.20]
         App[App Servers<br/>10.10.0.30]
     end
-    
-    subgraph V20 [VLAN 20 - DATABASE]
+        subgraph V20 [VLAN 20 - DATABASE]
         direction LR
         MySQL[MySQL<br/>10.20.0.10]
         PG[PostgreSQL<br/>10.20.0.20]
         BackupDB[Backup Server<br/>10.20.0.30]
     end
-    
-    subgraph V30 [VLAN 30 - USER ACCESS]
+        subgraph V30 [VLAN 30 - USER ACCESS]
         direction LR
         Staff[Staff PCs<br/>10.30.0.10-50]
         Laptops[Laptops<br/>10.30.0.60-100]
         Printers[Printers<br/>10.30.0.101-110]
     end
-    
-    subgraph V99 [VLAN 99 - MANAGEMENT]
+        subgraph V99 [VLAN 99 - MANAGEMENT]
         direction LR
         Switches[Switches<br/>10.99.0.10-20]
         Routers[Routers<br/>10.99.0.1-2]
         MgmtFW[Firewalls<br/>10.99.0.5]
     end
-    
     %% ACL Rules Visualization
     V10 ==>|ALLOW| V20
     V30 -.-x|DENY| V10
@@ -43,7 +39,6 @@ flowchart TD
     V99 ==>|ALLOW| V10
     V99 ==>|ALLOW| V20
     V99 ==>|ALLOW| V30
-    
     %% Styling
     style V10 fill:#e1f5fe,stroke:#01579b,stroke-width:2px
     style V20 fill:#fff3e0,stroke:#e65100,stroke-width:2px
