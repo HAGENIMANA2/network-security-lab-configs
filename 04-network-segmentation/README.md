@@ -1,19 +1,14 @@
 ## Network Segmentation Diagram
-
 Here is the network segmentation diagram showing VLANs and ACL rules:
-
 ```mermaid
 flowchart TD
     Internet((Internet)) --> FW[Firewall - Cisco ASA<br/>CCNA Certified]
-    
-    FW --> L3[Layer 3 Switch<br/>Inter-VLAN Routing]
-    
-    L3 --> V10[VLAN 10<br/>APPLICATION<br/>10.10.0.0/24]
+        FW --> L3[Layer 3 Switch<br/>Inter-VLAN Routing]
+        L3 --> V10[VLAN 10<br/>APPLICATION<br/>10.10.0.0/24]
     L3 --> V20[VLAN 20<br/>DATABASE<br/>10.20.0.0/24]
     L3 --> V30[VLAN 30<br/>USER ACCESS<br/>10.30.0.0/24]
     L3 --> V99[VLAN 99<br/>MANAGEMENT<br/>10.99.0.0/24]
-    
-    subgraph V10 [VLAN 10 - APPLICATION]
+       subgraph V10 [VLAN 10 - APPLICATION]
         direction LR
         Web[Web Apps<br/>10.10.0.10]
         API[API Servers<br/>10.10.0.20]
