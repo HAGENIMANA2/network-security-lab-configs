@@ -1,8 +1,0 @@
-# Backup original
-sudo cp /opt/tomcat/conf/server.xml /opt/tomcat/conf/server.xml.bak
-
-# Copy new configuration
-sudo cp tomcat-server.xml /opt/tomcat/conf/server.xml
-
-# Restart Tomcat
-sudo systemctl restart tomcat
