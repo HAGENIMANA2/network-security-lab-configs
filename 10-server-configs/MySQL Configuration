@@ -1,8 +1,0 @@
-# Backup original
-sudo cp /etc/mysql/my.cnf /etc/mysql/my.cnf.bak
-
-# Copy new configuration
-sudo cp mysql-my.cnf /etc/mysql/my.cnf
-
-# Restart MySQL
-sudo systemctl restart mysql
