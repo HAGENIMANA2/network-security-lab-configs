@@ -1,1 +1,36 @@
+# ============================================
+# MySQL Performance Configuration
+# Author: Jean de Dieu HAGENIMANA
+# ============================================
 
+[mysqld]
+# Basic Settings
+user = mysql
+pid-file = /var/run/mysqld/mysqld.pid
+socket = /var/run/mysqld/mysqld.sock
+port = 3306
+basedir = /usr
+datadir = /var/lib/mysql
+tmpdir = /tmp
+
+# Memory Settings
+innodb_buffer_pool_size = 2G
+innodb_log_file_size = 512M
+innodb_flush_log_at_trx_commit = 2
+query_cache_size = 0
+query_cache_type = 0
+
+# Connection Settings
+max_connections = 500
+thread_cache_size = 100
+table_open_cache = 2000
+
+# Logging
+log_error = /var/log/mysql/error.log
+slow_query_log = 1
+slow_query_log_file = /var/log/mysql/slow.log
+long_query_time = 2
+
+# Security
+bind-address = 127.0.0.1
+skip-name-resolve
