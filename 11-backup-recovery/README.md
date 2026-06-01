@@ -31,6 +31,27 @@ Comprehensive backup procedures, disaster recovery testing methodologies, and au
 ├───────────────┼─────────────────┼───────────────────────────┤
 │ Yearly │ January 1 │ 7 years (for compliance) │
 └───────────────┴─────────────────┴───────────────────────────┘
+
+## RTO and RPO Targets
+
+| Environment | RTO (Recovery Time Objective) | RPO (Recovery Point Objective) |
+|-------------|-------------------------------|-------------------------------|
+| Production | 4 hours | 15 minutes |
+| DR Site | 8 hours | 1 hour |
+| Development | 24 hours | 24 hours |
+
+## Quick Setup Guide
+
+### 1. Configure Backup Script
+```bash
+# Edit backup script variables
+sudo nano backup-automation.sh
+
+# Modify these lines:
+BACKUP_DIR="/backup"           # Change to your backup location
+RETENTION_DAYS=30              # Adjust retention policy
+DB_PASSWORD="your_password"    # Set database password
+
 ```mermaid
 flowchart LR
     subgraph PRIMARY [PRIMARY SITE - Production]
@@ -70,22 +91,6 @@ flowchart LR
     style DR fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
     style STORAGE fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
 ```
-## RTO and RPO Targets
 
-| Environment | RTO (Recovery Time Objective) | RPO (Recovery Point Objective) |
-|-------------|-------------------------------|-------------------------------|
-| Production | 4 hours | 15 minutes |
-| DR Site | 8 hours | 1 hour |
-| Development | 24 hours | 24 hours |
 
-## Quick Setup Guide
 
-### 1. Configure Backup Script
-```bash
-# Edit backup script variables
-sudo nano backup-automation.sh
-
-# Modify these lines:
-BACKUP_DIR="/backup"           # Change to your backup location
-RETENTION_DAYS=30              # Adjust retention policy
-DB_PASSWORD="your_password"    # Set database password
