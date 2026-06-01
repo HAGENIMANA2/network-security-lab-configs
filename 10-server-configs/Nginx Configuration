@@ -1,0 +1,11 @@
+# Copy configuration
+sudo cp nginx-reverse-proxy.conf /etc/nginx/sites-available/example
+
+# Create symbolic link
+sudo ln -s /etc/nginx/sites-available/example /etc/nginx/sites-enabled/
+
+# Test configuration
+sudo nginx -t
+
+# Reload Nginx
+sudo systemctl reload nginx
