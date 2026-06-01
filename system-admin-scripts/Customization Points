@@ -1,0 +1,5 @@
+Script	Variables to Change
+backup-automation.sh	BACKUP_DIR, RETENTION_DAYS, email address
+log-rotation.sh	LOG_SOURCE, LOG_ARCHIVE, RETENTION_DAYS
+user-management.sh	Default shell, home directory base path
+system-monitor.py	ALERT_THRESHOLD_*, ALERT_EMAIL
