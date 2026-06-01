@@ -18,4 +18,17 @@ Comprehensive backup procedures, disaster recovery testing methodologies, and au
 | `dr-failover-script.sh` | Automated disaster recovery failover script | During DR events or tests |
 
 ## Backup Strategy Overview
+┌─────────────────────────────────────────────────────────────┐
+│ BACKUP STRATEGY │
+├───────────────┬─────────────────┬───────────────────────────┤
+│ Type │ Frequency │ Retention │
+├───────────────┼─────────────────┼───────────────────────────┤
+│ Daily │ Every 24 hours │ 30 days │
+├───────────────┼─────────────────┼───────────────────────────┤
+│ Weekly │ Every Sunday │ 3 months │
+├───────────────┼─────────────────┼───────────────────────────┤
+│ Monthly │ 1st of month │ 12 months (1 year) │
+├───────────────┼─────────────────┼───────────────────────────┤
+│ Yearly │ January 1 │ 7 years (for compliance) │
+└───────────────┴─────────────────┴───────────────────────────┘
 
