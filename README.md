@@ -15,7 +15,7 @@ This repository contains demonstration configurations, templates, and procedures
  
 ## CCNA Certification 
  
-I hold a valid CCNA certification (2015) and have continuously practiced network security in enterprise and government environments. 
+I hold a valid CCNA certification (2015) and have continuously practiced System Administration in enterprise and government environments. 
  
 ## Repository Structure 
  
