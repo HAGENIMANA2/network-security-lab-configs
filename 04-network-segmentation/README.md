@@ -3,7 +3,6 @@
 Here is the network segmentation diagram showing VLANs and ACL rules:
 
 ```mermaid
-```mermaid
 flowchart TD
     Internet((Internet)) --> FW[Firewall - Cisco ASA<br/>CCNA Certified]
     
