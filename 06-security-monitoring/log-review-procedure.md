@@ -1,5 +1,5 @@
 # Daily Log Review Procedure 
-# Author: Jean de Dieu HAGENIMANA - CCNA Certified 
+# Author: Jean de Dieu HAGENIMANA - MIT/CCNA Certified 
  
 ## Step 1: Priority Review 
 - Check firewall denies 
