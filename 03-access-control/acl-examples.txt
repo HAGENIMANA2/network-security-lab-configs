@@ -1,5 +1,5 @@
 ! Access Control List Examples 
-! Author: Jean de Dieu HAGENIMANA - CCNA Certified 
+! Author: Jean de Dieu HAGENIMANA - MIT/CCNA Certified 
  
 access-list 10 permit 192.168.1.0 0.0.0.255 
 access-list 10 deny any log 
