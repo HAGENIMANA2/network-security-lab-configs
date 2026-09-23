@@ -1,5 +1,5 @@
 ! IPsec VPN Configuration Sample
-! Author: Jean de Dieu HAGENIMANA - CCNA Certified
+! Author: Jean de Dieu HAGENIMANA - MIT/CCNA Certified
 
 crypto isakmp policy 10
  encryption aes 256
